@@ -31,7 +31,10 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['komchop.coinpecko.online','203.161.63.30',  'localhost']
+# production allowed host
+ALLOWED_HOSTS = ['komchop.coinpecko.online','203.161.63.30',  'localhost'] 
+
+# ALLOWED_HOSTS = ['194.195.118.42', '127.0.0.1', 'djangofoodonline.com', 'www.djangofoodonline.com']
 
 
 # Application definition
@@ -105,6 +108,21 @@ WSGI_APPLICATION = 'foodOnline_main.wsgi.application'
 #     }
 # }
 
+# local database settings
+# DATABASES = {
+#     'default': {
+#         # 'ENGINE': 'django.db.backends.postgresql',
+#          'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'komchop',
+#         'USER': 'postgres',
+#         'PASSWORD': 'admin',
+#         'HOST': '127.0.0.1',
+#     }
+# }
+
+
+# production database settings
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.postgresql',
@@ -117,12 +135,10 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+
+
+
+
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -188,16 +204,19 @@ MESSAGE_TAGS = {
 }
 
 # Email configuration
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'foodOnline Marketplace <django.foodonline@gmail.com>'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'akom.victory@gmail.com'
+EMAIL_HOST_PASSWORD = 'kvatdxskvbgbiiyw'
+DEFAULT_FROM_EMAIL = 'akom.victory@gmail.com'
 
 # GOOGLE_API_KEY = config('GOOGLE_API_KEY')
 GOOGLE_API_KEY = 'AIzaSyC4yTudr9pTcB2khAgrbCMBfVvbvi0hVU'
 
+
+# Production GDAL configuration settings
 if DEBUG:
     os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/bin') + ':' + os.environ['PATH']
     os.environ['GDAL_DATA'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/gdal')
@@ -206,6 +225,12 @@ if DEBUG:
     os.environ['PYTHONPATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages')
     os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/bin') + ':' + os.environ['PATH']
 
+
+#local GDAL configuration settings
+# if DEBUG == True:
+#     os.environ['PATH'] = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo') + ';' + os.environ['PATH']
+#     os.environ['PROJ_LIB'] = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo\data\proj') + ';' + os.environ['PATH']
+#     GDAL_LIBRARY_PATH = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo\gdal304.dll')
 
 # PAYPAL_CLIENT_ID = config('PAYPAL_CLIENT_ID')
 PAYPAL_CLIENT_ID = 'AIzaSyC4yTudr9pTcB2khAgrbCMBfVvbvi0hVU'
