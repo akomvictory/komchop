@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['194.195.118.42', '127.0.0.1', 'djangofoodonline.com', 'www.djangofoodonline.com']
+ALLOWED_HOSTS = ['komchop.coinpecko.online','203.161.63.30',  'localhost']
 
 
 # Application definition
@@ -105,10 +105,11 @@ WSGI_APPLICATION = 'foodOnline_main.wsgi.application'
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.postgresql',
-        'ENGINE': 'django.contrib.gis.db.backends.mysql',
-        'NAME': 'mydb',
-        'USER': 'root',
-        'PASSWORD': 'root',
+         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+       # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'komchop',
+        'USER': 'komchop',
+        'PASSWORD': 'admin',
         'HOST': '127.0.0.1',
     }
 }
@@ -161,8 +162,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR /'static'
+#STATIC_ROOT = BASE_DIR / '../staticfiles'
 STATICFILES_DIRS = [
-    'foodOnline_main/static'
+     'foodOnline_main/static'
 ]
 
 # Media files configuration
@@ -174,6 +176,8 @@ MEDIA_ROOT = BASE_DIR /'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
@@ -191,12 +195,14 @@ DEFAULT_FROM_EMAIL = 'foodOnline Marketplace <django.foodonline@gmail.com>'
 # GOOGLE_API_KEY = config('GOOGLE_API_KEY')
 GOOGLE_API_KEY = 'AIzaSyC4yTudr9pTcB2khAgrbCMBfVvbvi0hVU'
 
+if DEBUG:
+    os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/bin') + ':' + os.environ['PATH']
+    os.environ['GDAL_DATA'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/gdal')
+    os.environ['GDAL_DRIVER_PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/lib/gdalplugins')
+    os.environ['PROJ_LIB'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/proj')
+    os.environ['PYTHONPATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages')
+    os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/bin') + ':' + os.environ['PATH']
 
-
-if DEBUG == True:
-    os.environ['PATH'] = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo') + ';' + os.environ['PATH']
-    os.environ['PROJ_LIB'] = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo\data\proj') + ';' + os.environ['PATH']
-    GDAL_LIBRARY_PATH = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo\gdal304.dll')
 
 # PAYPAL_CLIENT_ID = config('PAYPAL_CLIENT_ID')
 PAYPAL_CLIENT_ID = 'AIzaSyC4yTudr9pTcB2khAgrbCMBfVvbvi0hVU'
