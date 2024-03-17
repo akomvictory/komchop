@@ -1,6 +1,6 @@
 asgiref==3.7.2
 awsebcli
-backports.zoneinfo==0.2.1
+backports.zoneinfo==0.2.1;python_version<"3.9"
 botocore
 cement==2.8.2
 certifi==2023.5.7
