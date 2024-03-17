@@ -1,7 +1,7 @@
 asgiref==3.7.2
-awsebcli==3.20.7
+awsebcli
 backports.zoneinfo==0.2.1
-botocore==1.29.158
+botocore
 cement==2.8.2
 certifi==2023.5.7
 charset-normalizer==3.2.0
@@ -38,7 +38,7 @@ sqlparse==0.4.4
 termcolor==1.1.0
 typing_extensions==4.7.1
 tzdata==2023.3
-urllib3==2.0.3
+urllib3
 validate-email==1.3
 virtualenv==20.24.5
 wcwidth==0.1.9
