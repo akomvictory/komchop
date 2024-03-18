@@ -138,7 +138,7 @@ DATABASES = {
 
 
 
-
+CSRF_TRUSTED_ORIGINS = ['https://*.komchop.ng']
 
 AUTH_USER_MODEL = 'accounts.User'
 
