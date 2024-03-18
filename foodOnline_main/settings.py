@@ -32,7 +32,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 # production allowed host
-ALLOWED_HOSTS = ['komchop.coinpecko.online','203.161.63.30',  'localhost'] 
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv()) 
 
 # ALLOWED_HOSTS = ['194.195.118.42', '127.0.0.1', 'djangofoodonline.com', 'www.djangofoodonline.com']
 
