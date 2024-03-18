@@ -97,16 +97,16 @@ WSGI_APPLICATION = 'foodOnline_main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         # 'ENGINE': 'django.db.backends.postgresql',
-#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-#         'NAME': config('DB_NAME'),
-#         'USER': config('DB_USER'),
-#         'PASSWORD': config('DB_PASSWORD'),
-#         'HOST': config('DB_HOST'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+    }
+}
 
 # local database settings
 # DATABASES = {
@@ -123,17 +123,17 @@ WSGI_APPLICATION = 'foodOnline_main.wsgi.application'
 
 
 # production database settings
-DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-       # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'komchop',
-        'USER': 'komchop',
-        'PASSWORD': 'admin',
-        'HOST': '127.0.0.1',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         # 'ENGINE': 'django.db.backends.postgresql',
+#          'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'komchop',
+#         'USER': 'komchop',
+#         'PASSWORD': 'admin',
+#         'HOST': '127.0.0.1',
+#     }
+# }
 
 
 
