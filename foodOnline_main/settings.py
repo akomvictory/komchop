@@ -217,13 +217,13 @@ GOOGLE_API_KEY = 'AIzaSyC4yTudr9pTcB2khAgrbCMBfVvbvi0hVU'
 
 
 # Production GDAL configuration settings
-if DEBUG:
-    os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/bin') + ':' + os.environ['PATH']
-    os.environ['GDAL_DATA'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/gdal')
-    os.environ['GDAL_DRIVER_PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/lib/gdalplugins')
-    os.environ['PROJ_LIB'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/proj')
-    os.environ['PYTHONPATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages')
-    os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/bin') + ':' + os.environ['PATH']
+# if DEBUG:
+os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/bin') + ':' + os.environ['PATH']
+os.environ['GDAL_DATA'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/gdal')
+os.environ['GDAL_DRIVER_PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/lib/gdalplugins')
+os.environ['PROJ_LIB'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/proj')
+os.environ['PYTHONPATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages')
+os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/bin') + ':' + os.environ['PATH']
 
 
 #local GDAL configuration settings
