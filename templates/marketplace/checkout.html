@@ -104,10 +104,10 @@
                                                     </div>
 
                                                     <div class="quantity" style="display: inline-block; position: absolute; top: 50%; transform: translateY(-50%); margin-top: -10px;">
-                                                        <span>{{ item.quantity }} QTY</span>
+                                                        <span> {{ item.quantity }} QTY </span>
                                                     </div>
                                                     <div class="price-holder">
-                                                        <span class="price">${{ item.fooditem.price }}</span>
+                                                        <span class="price"> ₦{{ item.fooditem.price }}</span>
                                                     </div>
                                                 </li>
                                                 {% endfor %}
@@ -123,7 +123,7 @@
                                             <li style="list-style-type: none;">
                                                 Subtotal
                                                 <span class="price float-right">
-                                                    <span class="currency">$</span>
+                                                    <span class="currency">₦</span>
                                                     <span id="subtotal">{{ subtotal }}</span>
                                                 </span>
                                             </li>
@@ -133,7 +133,7 @@
                                                     <li style="list-style-type: none;">
                                                         {{ key }} <small>({{ i }}%)</small>
                                                         <span class="price float-right">
-                                                            <span class="currency">$</span>
+                                                            <span class="currency">₦</span>
                                                             <span id="tax-{{ key }}">{{ j }}</span>
                                                         </span>
                                                     </li>
@@ -144,7 +144,7 @@
                                             <li style="list-style-type: none; font-weight: 600;">
                                                 TOTAL
                                                 <span class="price float-right">
-                                                    <span class="currency">$</span>
+                                                    <span class="currency">₦</span>
                                                     <span id="total">{{ grand_total }}</span>
                                                 </span>
                                             </li>
@@ -153,14 +153,14 @@
                                             <h5>SELECT PAYMENT METHOD</h5>
                                             <div class="payment-method">
                                                 <label>
-                                                    <input type="radio" name="payment_method" value="PayPal"> <!-- this will be changed to paystack  -->
+                                                    <input type="radio" name="payment_method" value="PayStack"> <!-- this will be changed to paystack  -->
                                                     <img src="{% static 'images/PayStack.png' %}" alt="PayStack" width="100">
                                                 </label>
                                                 &emsp;
-                                                <label> 
-                                                    <input type="radio" name="payment_method" value="RazorPay"> <!-- this will be changed to flutterwave  -->
-                                                    <img src="{% static 'images/flutterwave-logo1.png' %}" alt="flutterwave-logo1" width="100">
-                                                </label>
+                                                <!-- <label> 
+                                                    <input type="radio" name="payment_method" value="Flutterwave"> 
+                                                    <img src="{% static 'images/flutterwave-logo.png' %}" alt="flutterwave-logo1" width="100">
+                                                </label> -->
                                             </div>
                                             <span class="text-danger" id="payment-method-error"></span>
                                             <!-- Select payment method -->
