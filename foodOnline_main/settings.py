@@ -34,8 +34,7 @@ DEBUG = config('DEBUG', cast=bool)
 # production allowed host
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv()) 
 
-
-# ALLOWED_HOSTS = ['194.195.118.42', '127.0.0.1', 'komchop.ng', 'www.komchop.com.ng']
+# ALLOWED_HOSTS = ['194.195.118.42', '127.0.0.1', 'djangofoodonline.com', 'www.djangofoodonline.com']
 
 
 # Application definition
@@ -109,7 +108,7 @@ DATABASES = {
     }
 }
 
-# local database settings posgreSQL database
+# local database settings
 # DATABASES = {
 #     'default': {
 #         # 'ENGINE': 'django.db.backends.postgresql',
@@ -118,19 +117,6 @@ DATABASES = {
 #         'NAME': 'komchop',
 #         'USER': 'postgres',
 #         'PASSWORD': 'admin',
-#         'HOST': '127.0.0.1',
-#     }
-# }
-
-# local database settings mysql database
-# DATABASES = {
-#     'default': {
-#         # 'ENGINE': 'django.db.backends.postgresql',
-#          'ENGINE': 'django.contrib.gis.db.backends.mysql',
-#        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'mydb',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
 #         'HOST': '127.0.0.1',
 #     }
 # }
@@ -148,10 +134,6 @@ DATABASES = {
 #         'HOST': '127.0.0.1',
 #     }
 # }
-<<<<<<< HEAD
-
-=======
->>>>>>> dbfaf2bfee8c3ada7aad9a269db3b882db069658
 
 
 
@@ -197,28 +179,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-<<<<<<< HEAD
-#Static local settings
-# STATIC_URL = '/static/'
-# STATIC_ROOT = BASE_DIR /'static'
-# #STATIC_ROOT = BASE_DIR / '../staticfiles'
-# STATICFILES_DIRS = [
-#      'foodOnline_main/static'
-# ]
-
-#Static files production settings
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-
-
-# Media files configuration
-=======
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
->>>>>>> dbfaf2bfee8c3ada7aad9a269db3b882db069658
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
@@ -232,6 +194,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+import os
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 from django.contrib.messages import constants as messages
@@ -253,10 +216,7 @@ GOOGLE_API_KEY = 'AIzaSyC4yTudr9pTcB2khAgrbCMBfVvbvi0hVU'
 
 
 # Production GDAL configuration settings
-<<<<<<< HEAD
-=======
 # if DEBUG:
->>>>>>> dbfaf2bfee8c3ada7aad9a269db3b882db069658
 os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/bin') + ':' + os.environ['PATH']
 os.environ['GDAL_DATA'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/gdal')
 os.environ['GDAL_DRIVER_PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/lib/gdalplugins')
@@ -280,10 +240,7 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 # RZP_KEY_SECRET = config('RZP_KEY_SECRET')
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> dbfaf2bfee8c3ada7aad9a269db3b882db069658
 # Security
 if DEBUG is False:
 
@@ -295,8 +252,4 @@ if DEBUG is False:
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-<<<<<<< HEAD
     SECURE_REFERRER_POLICY = 'origin'
-=======
-    SECURE_REFERRER_POLICY = 'origin'
->>>>>>> dbfaf2bfee8c3ada7aad9a269db3b882db069658
