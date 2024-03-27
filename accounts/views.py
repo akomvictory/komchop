@@ -64,7 +64,8 @@ def registerUser(request):
             email_template = 'accounts/emails/account_verification_email.html'
             send_verification_email(request, user, mail_subject, email_template)
             messages.success(request, 'Registered sucessful, check your mail inbox for verification link!')
-            return redirect('registerUser')
+            # return redirect('registerUser') 
+            return redirect('login') 
         else:
             print('invalid form')
             print(form.errors)
@@ -106,8 +107,9 @@ def registerVendor(request):
             email_template = 'accounts/emails/account_verification_email.html'
             send_verification_email(request, user, mail_subject, email_template)
 
-            messages.success(request, 'Your account has been registered sucessfully! Please wait for the approval.')
+            messages.success(request, 'Your account has been registered sucessfully! check mail inbox for verification link!.')
             return redirect('registerVendor')
+            # return redirect('home')
         else:
             print('invalid form')
             print(form.errors)

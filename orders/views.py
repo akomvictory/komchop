@@ -205,7 +205,7 @@ def payments(request):
             'transaction_id': transaction_id,
         }
         return JsonResponse(response)
-    return HttpResponse('Payments view')
+    # return HttpResponse('Payments view')
 
 
 def order_complete(request):

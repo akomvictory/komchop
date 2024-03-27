@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
+from decouple import config, Csv
 import os
 from django import conf
 
@@ -32,9 +32,10 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 # production allowed host
-# ALLOWED_HOSTS = ['komchop.coinpecko.online','203.161.63.30',  'localhost'] 
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv()) 
 
-ALLOWED_HOSTS = ['194.195.118.42', '127.0.0.1', 'djangofoodonline.com', 'www.djangofoodonline.com']
+
+# ALLOWED_HOSTS = ['194.195.118.42', '127.0.0.1', 'komchop.ng', 'www.komchop.com.ng']
 
 
 # Application definition
@@ -97,16 +98,16 @@ WSGI_APPLICATION = 'foodOnline_main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         # 'ENGINE': 'django.db.backends.postgresql',
-#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-#         'NAME': config('DB_NAME'),
-#         'USER': config('DB_USER'),
-#         'PASSWORD': config('DB_PASSWORD'),
-#         'HOST': config('DB_HOST'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+    }
+}
 
 # local database settings posgreSQL database
 # DATABASES = {
@@ -122,17 +123,17 @@ WSGI_APPLICATION = 'foodOnline_main.wsgi.application'
 # }
 
 # local database settings mysql database
-DATABASES = {
-    'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-         'ENGINE': 'django.contrib.gis.db.backends.mysql',
-       # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mydb',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         # 'ENGINE': 'django.db.backends.postgresql',
+#          'ENGINE': 'django.contrib.gis.db.backends.mysql',
+#        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'mydb',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#         'HOST': '127.0.0.1',
+#     }
+# }
 
 
 # production database settings
@@ -192,12 +193,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+#Static local settings
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR /'static'
+# #STATIC_ROOT = BASE_DIR / '../staticfiles'
+# STATICFILES_DIRS = [
+#      'foodOnline_main/static'
+# ]
+
+#Static files production settings
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR /'static'
-#STATIC_ROOT = BASE_DIR / '../staticfiles'
-STATICFILES_DIRS = [
-     'foodOnline_main/static'
-]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 
 # Media files configuration
 MEDIA_URL = '/media/'
@@ -208,7 +218,6 @@ MEDIA_ROOT = BASE_DIR /'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import os
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 from django.contrib.messages import constants as messages
@@ -230,20 +239,19 @@ GOOGLE_API_KEY = 'AIzaSyC4yTudr9pTcB2khAgrbCMBfVvbvi0hVU'
 
 
 # Production GDAL configuration settings
-# if DEBUG:
-#     os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/bin') + ':' + os.environ['PATH']
-#     os.environ['GDAL_DATA'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/gdal')
-#     os.environ['GDAL_DRIVER_PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/lib/gdalplugins')
-#     os.environ['PROJ_LIB'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/proj')
-#     os.environ['PYTHONPATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages')
-#     os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/bin') + ':' + os.environ['PATH']
+os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/bin') + ':' + os.environ['PATH']
+os.environ['GDAL_DATA'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/gdal')
+os.environ['GDAL_DRIVER_PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/lib/gdalplugins')
+os.environ['PROJ_LIB'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/proj')
+os.environ['PYTHONPATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages')
+os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/bin') + ':' + os.environ['PATH']
 
 
 #local GDAL configuration settings
-if DEBUG == True:
-    os.environ['PATH'] = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo') + ';' + os.environ['PATH']
-    os.environ['PROJ_LIB'] = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo\data\proj') + ';' + os.environ['PATH']
-    GDAL_LIBRARY_PATH = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo\gdal304.dll')
+# if DEBUG == True:
+#     os.environ['PATH'] = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo') + ';' + os.environ['PATH']
+#     os.environ['PROJ_LIB'] = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo\data\proj') + ';' + os.environ['PATH']
+#     GDAL_LIBRARY_PATH = os.path.join(BASE_DIR, 'env\Lib\site-packages\osgeo\gdal304.dll')
 
 # PAYPAL_CLIENT_ID = config('PAYPAL_CLIENT_ID')
 PAYPAL_CLIENT_ID = 'AIzaSyC4yTudr9pTcB2khAgrbCMBfVvbvi0hVU'
@@ -252,3 +260,17 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 
 # RZP_KEY_ID = config('RZP_KEY_ID')
 # RZP_KEY_SECRET = config('RZP_KEY_SECRET')
+
+
+# Security
+if DEBUG is False:
+
+    SECURE_BROWSER_XSS_FILTER = True
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_HSTS_SECONDS = 314536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_REFERRER_POLICY = 'origin'
