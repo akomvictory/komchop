@@ -148,11 +148,15 @@ DATABASES = {
 #         'HOST': '127.0.0.1',
 #     }
 # }
+<<<<<<< HEAD
+
+=======
+>>>>>>> dbfaf2bfee8c3ada7aad9a269db3b882db069658
 
 
 
 
-
+# CSRF_TRUSTED_ORIGINS = ['http://*.komchop.ng']
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -193,6 +197,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+<<<<<<< HEAD
 #Static local settings
 # STATIC_URL = '/static/'
 # STATIC_ROOT = BASE_DIR /'static'
@@ -210,8 +215,17 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 # Media files configuration
+=======
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+>>>>>>> dbfaf2bfee8c3ada7aad9a269db3b882db069658
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR /'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'staticfiles'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -239,6 +253,10 @@ GOOGLE_API_KEY = 'AIzaSyC4yTudr9pTcB2khAgrbCMBfVvbvi0hVU'
 
 
 # Production GDAL configuration settings
+<<<<<<< HEAD
+=======
+# if DEBUG:
+>>>>>>> dbfaf2bfee8c3ada7aad9a269db3b882db069658
 os.environ['PATH'] = os.path.join(BASE_DIR, 'venv/bin') + ':' + os.environ['PATH']
 os.environ['GDAL_DATA'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/share/gdal')
 os.environ['GDAL_DRIVER_PATH'] = os.path.join(BASE_DIR, 'venv/lib/python3.12/site-packages/osgeo/lib/gdalplugins')
@@ -262,6 +280,10 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 # RZP_KEY_SECRET = config('RZP_KEY_SECRET')
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> dbfaf2bfee8c3ada7aad9a269db3b882db069658
 # Security
 if DEBUG is False:
 
@@ -273,4 +295,8 @@ if DEBUG is False:
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+<<<<<<< HEAD
     SECURE_REFERRER_POLICY = 'origin'
+=======
+    SECURE_REFERRER_POLICY = 'origin'
+>>>>>>> dbfaf2bfee8c3ada7aad9a269db3b882db069658
